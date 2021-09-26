@@ -30,9 +30,9 @@ const handleEvent = middlewareCompose([
   },
 ])
 
-router.post(middleware, async (req, res) => {
+router.post('/', middleware, async (req, res) => {
   const events = _.get(req, 'body.events', [])
-  await Promise.all(_.map(events, event => handleEvent({ req, events })))
+  await Promise.all(_.map(events, event => handleEvent({ req, event })))
   res.json({})
 })
 

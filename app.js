@@ -10,13 +10,13 @@ const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 
 const app = express()
-app.use('/webhook', require('./line')) // 需要在 express.json() 之前
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 app.use(logger('dev'))
+app.use('/webhook', require('./line')) // 需要在 express.json() 之前
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
